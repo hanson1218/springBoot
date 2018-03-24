@@ -4,8 +4,8 @@
 	<groupId>com.lhs.www</groupId>
 	<artifactId>springBoot</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>jar</packaging>
-	
+	<packaging>war</packaging>
+
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
@@ -19,42 +19,48 @@
 	</dependencies>
 	<build>
 		<plugins>
-			<!-- <plugin>
-				Build an executable JAR
+			<!-- <plugin> Build an executable JAR <groupId>org.apache.maven.plugins</groupId> 
+				<artifactId>maven-jar-plugin</artifactId> <version>3.0.2</version> <configuration> 
+				<archive> <manifest> <addClasspath>true</addClasspath> <classpathPrefix>lib/</classpathPrefix> 
+				<mainClass>com.lhs.www.Start</mainClass> </manifest> </archive> </configuration> 
+				</plugin> -->
+			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-jar-plugin</artifactId>
-				<version>3.0.2</version>
+				<artifactId>maven-war-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>default-war</id>
+						<phase>package</phase>
+						<goals>
+							<goal>war</goal>
+						</goals>
+					</execution>
+				</executions>
 				<configuration>
+					<failOnMissingWebXml>false</failOnMissingWebXml>
 					<archive>
-						<manifest>
-							<addClasspath>true</addClasspath>
-							<classpathPrefix>lib/</classpathPrefix>
+						<manifestEntries>
 							<mainClass>com.lhs.www.Start</mainClass>
-						</manifest>
+						</manifestEntries>
 					</archive>
 				</configuration>
+			</plugin>
+			<!-- <plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				<version>1.5.4.RELEASE</version>
+				<configuration>
+					<mainClass>${start-class}</mainClass>
+					<layout>ZIP</layout>
+				</configuration>
+				<executions>
+					<execution>
+						<goals>
+							<goal>repackage</goal>
+						</goals>
+					</execution>
+				</executions>
 			</plugin> -->
-			<plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-war-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <id>default-war</id>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>war</goal>
-                        </goals>
-                    </execution>
-                </executions>
-                <configuration>
-                    <failOnMissingWebXml>false</failOnMissingWebXml>
-                    <archive>
-                        <manifestEntries>
-                            <mainClass>com.lhs.www.Starter</mainClass>
-                        </manifestEntries>
-                    </archive>
-                </configuration>
-            </plugin>
 		</plugins>
 	</build>
 	<properties>
