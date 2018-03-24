@@ -24,7 +24,7 @@
 				<archive> <manifest> <addClasspath>true</addClasspath> <classpathPrefix>lib/</classpathPrefix> 
 				<mainClass>com.lhs.www.Start</mainClass> </manifest> </archive> </configuration> 
 				</plugin> -->
-			<plugin>
+			<!-- <plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-war-plugin</artifactId>
 				<executions>
@@ -44,14 +44,14 @@
 						</manifestEntries>
 					</archive>
 				</configuration>
-			</plugin>
-			<!-- <plugin>
+			</plugin> -->
+			 <plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 				<version>1.5.4.RELEASE</version>
 				<configuration>
-					<mainClass>${start-class}</mainClass>
-					<layout>ZIP</layout>
+					<mainClass>com.lhs.www.Start</mainClass>
+					<layout>WAR</layout>
 				</configuration>
 				<executions>
 					<execution>
@@ -60,7 +60,7 @@
 						</goals>
 					</execution>
 				</executions>
-			</plugin> -->
+			</plugin> 
 		</plugins>
 	</build>
 	<properties>
