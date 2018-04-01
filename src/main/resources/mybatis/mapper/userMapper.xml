@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
+<mapper namespace="com.lhs.www.dao.UserDao" >  
+   
+  <select id="getUserInfoById" resultType="com.lhs.www.entity.User" >  
+    select id,name,phone from user where id = #{id};  
+  </select>  
+  <insert id="insertUser" useGeneratedKeys ="true" keyProperty="id" keyColumn="id" 
+ 					 parameterType="com.lhs.www.entity.User">  
+    insert into user (name,phone,address) values (#{name},#{phone},#{address})  
+    <!-- 实体类中包括子类#{person.name}  -->
+  </insert>  
+  
+  <update id="updateUser" parameterType="com.lhs.www.entity.User">
+  	update user
+  	<set>
+  		<if test="name!=null"> name=#{name},</if>
+  		<if test="phone!=null"> name=#{phone},</if>
+  		<if test="address!=null"> name=#{address}</if>
+  	</set>
+  	where id=#{id}
+  </update>
+</mapper> 

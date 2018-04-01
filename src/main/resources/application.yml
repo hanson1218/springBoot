@@ -1,0 +1,15 @@
+mybatis:
+  type-aliases-package: com.lhs.www.entity 
+  config-location: /mybatis/mybatis-config.xml
+  mapper-locations: /mybatis/mapper/*.xml
+  
+# datasource：com.mysql.jdbc.jdbc2.optional.MysqlDataSource
+jdbc:
+  driver: com.mysql.jdbc.Driver
+  url: jdbc:mysql://119.23.202.18:3306/test?useUnicode=true&charaterEncoding=utf-8&useSSL=false
+  databaseName: test
+  serverName: 127.0.0.1
+  userName: root
+  password: Root!!2018
+  
+
