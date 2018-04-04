@@ -10,8 +10,10 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Scope;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
+import org.springframework.web.context.WebApplicationContext;
 
 @Configuration
 public class SessionFactoryConfiguration {
@@ -30,6 +32,7 @@ public class SessionFactoryConfiguration {
 	private DataSource dataSource;
 	
 	@Bean(name="sqlSessionFactory")
+//	@Scope(value = WebApplicationContext.SCOPE_APPLICATION)
 	public SqlSessionFactoryBean createSqlSessionFactory() throws IOException{
 		SqlSessionFactoryBean sqlSessionFactoryBean = new SqlSessionFactoryBean();
 		sqlSessionFactoryBean.setConfigLocation(new ClassPathResource(mybatisConfigFilePath));
