@@ -56,6 +56,11 @@
 		</logger>
 	</springProfile>
 
+	<logger name="org.springframework" additivity="false">
+        <level value="INFO" />
+        <appender-ref ref="${application.environment}Appender"/>
+    </logger>
+
 	<!-- 生产环境. -->
 	<springProfile name="prod">
 		<logger name="com.example.demo.controller" level="INFO"

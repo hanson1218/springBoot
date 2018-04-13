@@ -13,8 +13,8 @@ jdbc:
   password: Root!!2018
   
 # Logging & Tomcat
-#logging.config: "classpath:logback-spring.xml"
-logging.config: "classpath:logbackTest.xml"
+logging.config: "classpath:logback-spring.xml"
+#logging.config: "classpath:logbackTest.xml"
 
 test:
      env: dev 
