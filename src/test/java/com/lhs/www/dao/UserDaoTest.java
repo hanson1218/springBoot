@@ -21,6 +21,7 @@ public class UserDaoTest {
 	
 	
 	@Test
+	@Ignore
 	public void getUserInfoById(){
 		User user = userDao.getUserInfoById("1");
 		assertEquals("lhs", user.getName());
@@ -28,7 +29,7 @@ public class UserDaoTest {
 	}
 	
 	@Test
-//	@Ignore
+	@Ignore
 	public void insertUser(){
 		User user = new User();
 		user.setName("hxx");
