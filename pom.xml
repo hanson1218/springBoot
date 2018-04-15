@@ -77,6 +77,13 @@
 				<configuration>
 					<mainClass>com.lhs.www.Start</mainClass>
 					<layout>WAR</layout>
+					<encoding>UTF-8</encoding>
+                        <!-- 过滤后缀为pem、pfx的证书文件 -->
+                        <nonFilteredFileExtensions>
+                                <nonFilteredFileExtension>pem</nonFilteredFileExtension>
+                                <nonFilteredFileExtension>pfx</nonFilteredFileExtension>
+                                <nonFilteredFileExtension>p12</nonFilteredFileExtension>
+                        </nonFilteredFileExtensions>
 				</configuration>
 				<executions>
 					<execution>

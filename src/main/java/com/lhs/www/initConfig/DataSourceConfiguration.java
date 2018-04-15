@@ -26,6 +26,11 @@ public class DataSourceConfiguration {
 	@Value("${jdbc.password}")
 	private String password;
 
+	/**
+	 * 另一个种配置方式：@ConfigurationProperties(prefix="jdbc")
+	 * @return
+	 * @throws PropertyVetoException
+	 */
 	@Bean(name="dataSource")
 	public ComboPooledDataSource createDataSource() throws PropertyVetoException{
 		ComboPooledDataSource dataSource = new ComboPooledDataSource();

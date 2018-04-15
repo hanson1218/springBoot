@@ -65,8 +65,8 @@
 	<!--指定最基础的日志输出级别 -->
 	<root level="INFO">
 		<!--appender将会添加到这个loger -->
-		<appender-ref ref="consoleLog1" />
-		<appender-ref ref="consoleLog2" />
+		<appender-ref ref="devAppender" />
+		<appender-ref ref="prodAppender" />
 	</root>
 
 </configuration>

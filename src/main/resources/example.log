@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd" [
+        ]>
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/" debug="false">
+
+    <appender name="Appender" class="org.apache.log4j.ConsoleAppender">
+        <param name="threshold" value="INFO" />
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d [%.30t] %c %p %m%n"/>
+        </layout>
+    </appender>
+
+    <appender name="devAppender" class="org.apache.log4j.ConsoleAppender">
+        <param name="threshold" value="INFO" />
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d [%.30t] %c %p %m%n"/>
+        </layout>
+    </appender>
+
+    <appender name="fileAppender" class="org.apache.log4j.RollingFileAppender">
+        <param name="File" value="${application.home}/logs/ews-booking-service.txt"/>
+        <param name="Append" value="false"/>
+        <param name="MaxFileSize" value="1000KB"/>
+        <param name="MaxBackupIndex" value="100"/>
+        <layout class="org.apache.log4j.EnhancedPatternLayout">
+            <param name="ConversionPattern"
+                   value="DateTime=%d{ISO8601}{GMT} Application=ews-booking-service Thread=[%.30t] Logger=%c Type=%p Message=%m%n"/>
+        </layout>
+    </appender>
+
+    <appender name="testAppender" class="org.apache.log4j.AsyncAppender">
+        <param name="threshold" value="INFO" />
+        <appender-ref ref="fileAppender"/>
+    </appender>
+
+    <appender name="intAppender" class="org.apache.log4j.AsyncAppender">
+        <param name="threshold" value="INFO" />
+        <appender-ref ref="fileAppender"/>
+    </appender>
+
+    <appender name="prodAppender" class="org.apache.log4j.AsyncAppender">
+        <param name="threshold" value="ERROR" />
+        <appender-ref ref="fileAppender"/>
+    </appender>
+
+    <appender name="stressAppender" class="org.apache.log4j.AsyncAppender">
+        <param name="threshold" value="ERROR" />
+        <appender-ref ref="fileAppender"/>
+    </appender>
+
+    <appender name="errorAppender" class="org.apache.log4j.RollingFileAppender">
+        <param name="File" value="${application.home}/logs/errors.txt"/>
+        <param name="Append" value="false"/>
+        <param name="MaxFileSize" value="1000KB"/>
+        <param name="MaxBackupIndex" value="100"/>
+        <layout class="org.apache.log4j.EnhancedPatternLayout">
+            <param name="ConversionPattern"
+                   value="DateTime=%d{ISO8601}{GMT} Type=%p Message=%m%n"/>
+        </layout>
+        <filter class="org.apache.log4j.varia.LevelRangeFilter">
+            <param name="LevelMax" value="fatal"/>
+            <param name="LevelMin" value="error"/>
+            <param name="AcceptOnMatch" value="true"/>
+        </filter>
+    </appender>
+
+
+    <appender name="transactionLogAppender" class="org.apache.log4j.RollingFileAppender">
+        <param name="File" value="${application.home}/logs/ews-booking-service-transactions.txt"/>
+        <param name="Append" value="false"/>
+        <param name="MaxFileSize" value="1000KB"/>
+        <param name="MaxBackupIndex" value="100"/>
+        <layout class="org.apache.log4j.EnhancedPatternLayout">
+            <param name="ConversionPattern"
+                   value="DateTime=%d{ISO8601}{GMT} Application=ews-booking-service %m%n"/>
+        </layout>
+    </appender>
+    <appender name="eventLogAppender" class="org.apache.log4j.RollingFileAppender">
+        <param name="File" value="${application.home}/logs/ews-booking-service-events.txt"/>
+        <param name="Append" value="false"/>
+        <param name="MaxFileSize" value="1000KB"/>
+        <param name="MaxBackupIndex" value="100"/>
+        <layout class="org.apache.log4j.EnhancedPatternLayout">
+            <param name="ConversionPattern"
+                   value="DateTime=%d{ISO8601}{GMT} Application=ews-booking-service %m%n"/>
+        </layout>
+    </appender>
+
+    <appender name="requestResponseLogAppender" class="org.apache.log4j.RollingFileAppender">
+        <param name="File" value="${application.home}/logs/ews-booking-service-requests-responses.txt"/>
+        <param name="Append" value="false"/>
+        <param name="MaxFileSize" value="50000KB"/>
+        <param name="MaxBackupIndex" value="200"/>
+        <layout class="org.apache.log4j.EnhancedPatternLayout">
+            <param name="ConversionPattern"
+                   value="DateTime=%d{ISO8601}{GMT} Application=ews-booking-service %m%n"/>
+        </layout>
+    </appender>
+
+    <appender name="transactionLogAsyncAppender" class="org.apache.log4j.AsyncAppender">
+        <param name="Threshold" value="INFO" />
+        <appender-ref ref="transactionLogAppender"/>
+    </appender>
+    <appender name="eventLogAsyncAppender" class="org.apache.log4j.AsyncAppender">
+        <param name="Threshold" value="INFO" />
+        <appender-ref ref="eventLogAppender"/>
+    </appender>
+    <appender name="requestResponseLogAsyncAppender" class="org.apache.log4j.AsyncAppender">
+        <param name="Threshold" value="INFO" />
+        <appender-ref ref="requestResponseLogAppender"/>
+    </appender>
+
+
+    <logger name="com.expedia.www.ews.booking.logging.TransactionLogger" additivity="false">
+        <param name="Threshold" value="INFO" />
+        <appender-ref ref="transactionLogAsyncAppender"/>
+    </logger>
+
+    <logger name="com.expedia.www.ews.booking.logging.EventLogger" additivity="false">
+        <param name="threshold" value="INFO" />
+        <appender-ref ref="eventLogAsyncAppender"/>
+    </logger>
+
+    <logger name="com.expedia.www.ews.booking.logging.RequestResponseLogger" additivity="false">
+        <param name="Threshold" value="INFO" />
+        <appender-ref ref="requestResponseLogAsyncAppender"/>
+    </logger>
+
+    <logger name="org.springframework" additivity="false">
+        <level value="INFO" />
+        <appender-ref ref="${application.environment}Appender"/>
+    </logger>
+
+    <root>
+        <level value="DEBUG"/>
+        <appender-ref ref="${application.environment}Appender"/>
+        <appender-ref ref="errorAppender"/>
+    </root>
+</log4j:configuration>

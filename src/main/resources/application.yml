@@ -1,3 +1,11 @@
+server:
+  port: 8443
+  ssl:
+    key-store: keystore.p12
+    key-store-password: lhs853051727
+    keyStoreType: PKCS12
+    keyAlias: tomcat
+    
 mybatis:
   type-aliases-package: com.lhs.www.entity 
   config-location: /mybatis/mybatis-config.xml
@@ -8,13 +16,13 @@ jdbc:
   driver: com.mysql.jdbc.Driver
   url: jdbc:mysql://119.23.202.18:3306/test?useUnicode=true&charaterEncoding=utf-8&useSSL=false
   databaseName: test
-  serverName: 127.0.0.1
+  serverName: 119
   userName: root
   password: Root!!2018
   
 # Logging & Tomcat
-#logging.config: "classpath:logback-spring.xml"
-logging.config: "classpath:logbackTest.xml"
+logging.config: "classpath:logback-spring.xml"
+#logging.config: "classpath:logbackTest.xml"
 
 test:
      env: dev 
