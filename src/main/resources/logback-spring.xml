@@ -70,21 +70,23 @@
 			<pattern>%d [%thread] %-5level %logger{36} %line - %msg%n</pattern>
 		</encoder>
     </appender>
-
-	<!-- 测试环境+开发环境. 多个使用逗号隔开. -->
-	<!-- <springProfile name="dev">
-		<logger name="com.lhs.www" level="DEBUG" additivity="false">
-			<appender-ref ref="devAppender" />
-		</logger> 
-	</springProfile>
-	<appender name="prodAppender" class="ch.qos.logback.classic.AsyncAppender">
+    
+    <appender name="prodAppender" class="ch.qos.logback.classic.AsyncAppender">
 		<filter class="ch.qos.logback.classic.filter.LevelFilter">
 			<level>INFO</level>
 			<onMatch>ACCEPT</onMatch>
 			<onMismatch>DENY</onMismatch>
 			</filter>
 		<appender-ref ref="fileAppender" />
-	</appender>-->
+	</appender>
+
+	<!-- 测试环境+开发环境. 多个使用逗号隔开. -->
+	<!-- <springProfile name="dev">
+		<logger name="com.lhs.www" level="DEBUG" additivity="false">
+			<appender-ref ref="devAppender" />
+		</logger> 
+	</springProfile>-->
+	
 	
 	<logger name="org.springframework" additivity="false">
         <level value="INFO" />
