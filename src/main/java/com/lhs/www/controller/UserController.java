@@ -40,4 +40,17 @@ public class UserController {
 		 boolean flag  = userService.insertUser(user);
 		return flag ? "success":"failed";
 	}
+	
+	
+	@RequestMapping("/procedure/{id}")
+	@GetMapping
+	public String getNameByprocedure(@PathVariable int id){
+		return userService.getNameByProcedure(id);
+	}
+	
+	@RequestMapping("/user/{id}")
+	@GetMapping
+	public String getUserByprocedure(@PathVariable int id){
+		return userService.getUserByProcedure(id);
+	}
 }

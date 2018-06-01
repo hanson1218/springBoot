@@ -2,13 +2,11 @@ package com.lhs.www.initConfig;
 
 import java.beans.PropertyVetoException;
 
+import org.apache.commons.dbcp.BasicDataSource;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Scope;
-import org.springframework.context.annotation.ScopedProxyMode;
-import org.springframework.web.context.WebApplicationContext;
 
 import com.mchange.v2.c3p0.ComboPooledDataSource;
  
@@ -42,4 +40,15 @@ public class DataSourceConfiguration {
 		dataSource.setAutoCommitOnClose(false);
 		return dataSource;
 	}
+	
+	/*@Bean(name="dataSource")
+	public BasicDataSource  createDataSource(){
+		BasicDataSource  dataSource = new BasicDataSource ();
+		dataSource.setDriverClassName(jdbcDriver);
+		dataSource.setUrl(jdbcUrl);
+		dataSource.setUsername(user);
+		dataSource.setPassword(password);
+		System.out.println("test"+dataSource.getMaxIdle());
+		return dataSource;
+	}*/
 }

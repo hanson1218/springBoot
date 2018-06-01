@@ -20,4 +20,27 @@
   	</set>
   	where id=#{id}
   </update>
+  
+  <!--<parameterMap type="map" id="procedureMap">
+        <parameter property="userid" mode="IN" jdbcType="INTEGER" javaType="int"/>
+        <parameter property="userName" mode="OUT" jdbcType="VARCHAR" javaType="String"/>
+   </parameterMap>-->
+  <select id="getNameByProcedure" statementType="CALLABLE" parameterType="java.lang.Integer" resultType="java.lang.String">
+    {CALL getNameById(
+    	#{id,mode=IN,jdbcType=INTEGER}
+    )}
+	</select>
+	
+	<!-- 调用存储过程-->
+	<select id="getUserByProcedure" statementType="CALLABLE" parameterType="java.lang.Integer" resultMap="requestMap1">
+    {CALL getUserById(
+    	#{id,mode=IN,jdbcType=INTEGER}
+    )}
+	</select>
+	
+	<resultMap type="java.util.HashMap" id="requestMap1">
+		<result column="id" property="id" javaType="java.lang.Integer" jdbcType="INTEGER"/>
+        <result column="name" property="name" javaType="java.lang.String" jdbcType="VARCHAR"/>
+	</resultMap>
+	
 </mapper> 

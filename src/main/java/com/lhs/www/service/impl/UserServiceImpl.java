@@ -1,5 +1,7 @@
 package com.lhs.www.service.impl;
 
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -37,6 +39,19 @@ public class UserServiceImpl implements UserService {
 	public boolean updateUser(User user) {
 		// TODO Auto-generated method stub
 		return false;
+	}
+
+	@Override
+	public String getNameByProcedure(Integer id) {
+		// TODO Auto-generated method stub
+		return userDao.getNameByProcedure(id);
+	}
+
+	@Override
+	public String getUserByProcedure(Integer id) {
+		// TODO Auto-generated method stub
+		Map<String, Object> result =  userDao.getUserByProcedure(id);
+		return "id is " + result.get("id")+",name is "+result.get("name");
 	}
 	
 	
