@@ -70,6 +70,13 @@
     		<artifactId>commons-dbcp</artifactId>
    			 <version>1.4</version>
 		</dependency>
+		<!-- AOP注入 -->
+		<dependency>
+    		<groupId>aspectj</groupId>
+    		<artifactId>aspectjrt</artifactId>
+   			 <version>1.5.3</version>
+		</dependency>
+		
 		
 		<!-- 添加日志  不需要添加依赖，以为spring-boot-starter-web已经包含-->
 		<!-- <dependency>

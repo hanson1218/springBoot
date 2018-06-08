@@ -1,5 +1,6 @@
 package com.lhs.www.controller;
 
+import org.apache.log4j.MDC;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -18,6 +19,7 @@ public class HelloController {
 	
 	@RequestMapping("/envs")
 	public String testMultiEnv(){
+		System.out.println("controler");
 		return env;
 	}
 	

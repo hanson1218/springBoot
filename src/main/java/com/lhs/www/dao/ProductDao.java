@@ -16,4 +16,6 @@ public interface ProductDao {
     int updateByPrimaryKeySelective(Product record);
 
     int updateByPrimaryKey(Product record);
+    
+    int updateTotalNumByKey(Product record);
 }

@@ -6,6 +6,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.lhs.www.dao.OrderDao;
 import com.lhs.www.entity.Order;
+import com.lhs.www.entity.Product;
 import com.lhs.www.service.OrderService;
 import com.lhs.www.service.ProductService;
 
@@ -27,6 +28,10 @@ public class OrderServiceImpl implements OrderService {
 		if (productNum<order.getNum()) {
 			throw new RuntimeException();
 		}
+		Product product = new Product();
+		product.setId(order.getId());
+		product.setTotalnum(order.getNum());
+		productService.updateTotalNumByKey(product);
 		return 1;
 	}
 

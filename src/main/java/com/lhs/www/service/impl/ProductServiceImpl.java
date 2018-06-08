@@ -22,5 +22,10 @@ public class ProductServiceImpl implements ProductService {
 	public int selectNumById(Integer id) {
 		return productDao.selectNumById(id);
 	}
+	@Override
+	public int updateTotalNumByKey(Product record) {
+		// TODO Auto-generated method stub
+		return productDao.updateTotalNumByKey(record);
+	}
 
 }

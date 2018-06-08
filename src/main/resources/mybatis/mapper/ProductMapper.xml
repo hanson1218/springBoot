@@ -99,4 +99,10 @@
       version = #{version,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
+  
+  <update id="updateTotalNumByKey" parameterType="com.lhs.www.entity.Product">
+    update product
+    set totalnum = totalnum - #{totalnum,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
 </mapper>
