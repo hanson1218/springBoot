@@ -20,7 +20,7 @@ public class OrderServiceImpl implements OrderService {
 	private ProductService productService;
 	
 	@Override
-	@Transactional
+//	@Transactional
 	public int insert(Order order) {
 		int flag =  orderDao.insertSelective(order);
 		System.out.println("add order "+ flag);

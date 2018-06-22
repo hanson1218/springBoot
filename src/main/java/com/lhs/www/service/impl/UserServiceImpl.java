@@ -21,7 +21,8 @@ public class UserServiceImpl implements UserService {
 		return userDao.getUserInfoById(id);
 	}
 
-	@Transactional(rollbackFor=Exception.class)
+	//启动有问题
+//	@Transactional(rollbackFor= Exception.class)
 	@Override
 	public boolean insertUser(User user) {
 		if (user !=null && user.getName() !=null) {

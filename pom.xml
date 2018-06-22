@@ -76,7 +76,11 @@
     		<artifactId>aspectjrt</artifactId>
    			 <version>1.5.3</version>
 		</dependency>
-		
+		<dependency>
+            <groupId>org.apache.zookeeper</groupId>
+            <artifactId>zookeeper</artifactId>
+            <version>3.4.12</version>
+        </dependency>
 		
 		<!-- 添加日志  不需要添加依赖，以为spring-boot-starter-web已经包含-->
 		<!-- <dependency>
