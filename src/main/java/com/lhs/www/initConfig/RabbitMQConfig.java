@@ -37,7 +37,6 @@ public class RabbitMQConfig {
      */
     @Bean
     TopicExchange exchange() {
-    	
         return new TopicExchange(Constant.TOPIC_EXCHANGE);
     }
     
