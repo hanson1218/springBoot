@@ -28,10 +28,6 @@ public class RabbitMQConfig {
 
     @Bean
     public Queue queueMessages() {
-    	System.out.println("test1");
-    	System.out.println("test1");
-    	System.out.println("test1");
-    	System.out.println("test1");
         return new Queue(Constant.TOPIC_MESSAGES);
     }
     
@@ -41,16 +37,6 @@ public class RabbitMQConfig {
      */
     @Bean
     TopicExchange exchange() {
-    	System.out.println("test1");
-    	System.out.println("test1");
-    	System.out.println("test1");
-    	System.out.println("test1");
-    	System.out.println("test1");
-    	System.out.println("test1");
-    	System.out.println("test1");
-    	System.out.println("test1");
-    	
-    	System.out.println("test1");
         return new TopicExchange(Constant.TOPIC_EXCHANGE);
     }
     
