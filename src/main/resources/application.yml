@@ -26,3 +26,9 @@ logging.config: "classpath:logback-spring.xml"
 
 test:
      env: dev 
+     
+spring:
+    rabbitmq.host: 119.23.202.18
+    rabbitmq.port: 5672
+    rabbitmq.username: admin
+    rabbitmq.password: admin

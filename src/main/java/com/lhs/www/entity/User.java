@@ -33,8 +33,9 @@ public class User {
 	}
 	@Override
 	public String toString() {
-		return "id is " +String.valueOf(id)+", name is " + name;
+		return "User [id=" + id + ", name=" + name + ", phone=" + phone + ", address=" + address + "]";
 	}
+	
 	
 	
 	
