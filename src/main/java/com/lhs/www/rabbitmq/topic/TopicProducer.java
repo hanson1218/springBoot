@@ -7,6 +7,11 @@ import org.springframework.stereotype.Component;
 import com.lhs.www.common.Constant;
 
 
+/**
+ * 这个类似观察者模式
+ * @author pact
+ *
+ */
 @Component
 public class TopicProducer {
 
