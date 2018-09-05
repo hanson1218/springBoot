@@ -1,4 +1,4 @@
-package com.lhs.www.rabbitmq;
+package com.lhs.www.rabbitmq.springboot;
 
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.stereotype.Component;

@@ -1,4 +1,4 @@
-package com.lhs.www.rabbitmq;
+package com.lhs.www.rabbitmq.springboot;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
