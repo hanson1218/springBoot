@@ -5,7 +5,7 @@ import org.springframework.stereotype.Component;
 
 import com.lhs.www.common.Constant;
 
-@Component
+//@Component
 public class TopicConsumer {
 	
 	@RabbitListener(queues = Constant.TOPIC_MESSAGE)

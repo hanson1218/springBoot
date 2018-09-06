@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
 import com.lhs.www.entity.User;
 
 
-@Component
+//@Component
 public class Producer {
 	
 	@Autowired

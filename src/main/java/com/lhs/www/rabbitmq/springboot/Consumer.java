@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 import com.lhs.www.common.Constant;
 
 
-@Component
+//@Component
 public class Consumer {
 	
 		@RabbitListener(queues = Constant.QUEUE_NAME) //监听器监听指定的Queue

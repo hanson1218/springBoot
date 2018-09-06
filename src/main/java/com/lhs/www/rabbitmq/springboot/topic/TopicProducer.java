@@ -12,7 +12,7 @@ import com.lhs.www.common.Constant;
  * @author pact
  *
  */
-@Component
+//@Component
 public class TopicProducer {
 
 	@Autowired
