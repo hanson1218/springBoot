@@ -9,7 +9,7 @@ import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;
 
 /**
- * 订阅者模式，会忽略routing key的存在，直接将message广播到所有的Queue中
+ * 广播模式，会忽略routing key的存在，直接将message广播到所有的Queue中
  * 不处理路由键。你只需要简单的将队列绑定到交换机上。一个发送到交换机的消息都会被转发到与该交换机绑定的所有队列上,
  * 类似观察者模式
  * @author LiHuaSheng

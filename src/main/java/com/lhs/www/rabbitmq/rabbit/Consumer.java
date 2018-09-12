@@ -29,7 +29,7 @@ public class Consumer {
 		 * 可以通过channel.basicAck手动回复ack 参数3：消费者
 		 */
 		channel.basicConsume(MQConstant.QUEUE_NAME, true, consumer);
-		// 获取消息
+		// 从consumer中获取队列中的消息,nextDelivery是一个阻塞方法,如果队列中无内容,则等待 
 		QueueingConsumer.Delivery delivery = consumer.nextDelivery();
 		String message = new String(delivery.getBody());
 		System.out.println(" [消费者] Received '" + message + "'");
