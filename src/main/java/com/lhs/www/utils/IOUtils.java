@@ -8,13 +8,13 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import org.junit.Test;
+//import org.junit.Test;
 
 public class IOUtils {
 	
 	private static String PMS_ORG_RL ="C:/Users/lhs/Desktop/PMS_ORG_RL_";
 
-	@Test
+//	@Test
 	public void readTxt() throws Exception{
 		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("YYYYMMdd");
 		PMS_ORG_RL = PMS_ORG_RL+simpleDateFormat.format(new Date())+".txt";

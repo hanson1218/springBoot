@@ -5,7 +5,6 @@ server:
     key-store-password: lhs853051727
     keyStoreType: PKCS12
     keyAlias: tomcat
-    
 mybatis:
   type-aliases-package: com.lhs.www.entity 
   config-location: /mybatis/mybatis-config.xml
@@ -14,11 +13,11 @@ mybatis:
 # datasource：com.mysql.jdbc.jdbc2.optional.MysqlDataSource
 jdbc:
   driver: com.mysql.jdbc.Driver
-  url: jdbc:mysql://119.23.202.18:3306/test?useUnicode=true&charaterEncoding=utf-8&useSSL=false
+  url: jdbc:mysql://192.168.0.103:3306/test?useUnicode=true&charaterEncoding=utf-8&useSSL=false
   databaseName: test
   serverName: 119
   userName: root
-  password: Root!!2018
+  password: 123456
   
 # Logging & Tomcat
 logging.config: "classpath:logback-spring.xml"
@@ -32,3 +31,32 @@ spring:
     rabbitmq.port: 5672
     rabbitmq.username: admin
     rabbitmq.password: admin
+    redis:
+      cluster:
+        nodes: 192.168.213.129:7001,192.168.213.129:7002,192.168.213.129:7003,192.168.213.129:7004,192.168.213.129:7005,192.168.213.129:7006
+      database: 0
+      jedid:
+        pool:
+          max-active:20
+          max-wait:5
+          max-idle:3
+          min-idle:1
+      timeout: 60000 #连接超时（毫秒）
+    kafka:
+      bootstrap-servers: 192.168.0.103:9092 #kafka地址
+      producer:
+        retries: 1 #发生错误后，消息重发的次数。
+        batch-size: 16384 #当有多个消息需要被发送到同一个分区时，生产者会把它们放在同一个批次里。该参数指定了一个批次可以使用的内存大小，按照字节数计算
+        buffer-memory: 33554432  # 设置生产者内存缓冲区的大小。
+        key-serializer: org.apache.kafka.common.serialization.StringSerializer # 键的序列化方式
+        value-serializer: org.apache.kafka.common.serialization.StringSerializer # 值的序列化方式
+        acks: 1
+        # acks=0 ： 生产者在成功写入消息之前不会等待任何来自服务器的响应。
+        # acks=1 ： 只要集群的首领节点收到消息，生产者就会收到一个来自服务器成功响应。
+        # acks=all ：只有当所有参与复制的节点全部收到消息时，生产者才会收到一个来自服务器的成功响应
+      consumer:
+        enable-auto-commit: true # 是否自动提交偏移量，默认值是true,为了避免出现重复数据和数据丢失，可以把它设置为false,然后手动提交偏移量
+        key-deserializer: org.apache.kafka.common.serialization.StringDeserializer # 键的反序列化方式
+        value-deserializer: org.apache.kafka.common.serialization.StringDeserializer # 值的反序列化方式
+        group-id: myGroup
+

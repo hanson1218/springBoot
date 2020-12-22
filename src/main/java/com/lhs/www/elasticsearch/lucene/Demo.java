@@ -23,7 +23,7 @@ import org.apache.lucene.search.TermQuery;
 import org.apache.lucene.search.TopDocs;
 import org.apache.lucene.store.Directory;
 import org.apache.lucene.store.FSDirectory;
-import org.junit.Test;
+//import org.junit.Test;
 
 import com.hankcs.lucene.HanLPAnalyzer;
 
@@ -36,7 +36,7 @@ public class Demo {
 	// 索引存储的地址
 	private static final String INDEX_APTH = "F://ES//index";
 
-	@Test
+//	@Test
 	public void addIndex() throws Exception{
 		createIndex();
 	}
@@ -100,7 +100,7 @@ public class Demo {
         }
     }
     
-    @Test
+//    @Test
     public void searchIndex()throws Exception{
     	//索引目录
     	FSDirectory directory = FSDirectory.open(Paths.get(INDEX_APTH));

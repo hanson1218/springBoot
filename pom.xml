@@ -4,18 +4,19 @@
 	<groupId>com.lhs.www</groupId>
 	<artifactId>springBoot</artifactId>
 	<version>1.0.0</version>
-	<packaging>war</packaging>
+	<packaging>jar</packaging>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<java.version>1.8</java.version>
 		<lucene.version>6.3.0</lucene.version>
+		<skipTests>true</skipTests>
 	</properties>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>1.5.6.RELEASE</version>
+		<version>2.3.7.RELEASE</version>
 	</parent>
 	<dependencies>
 		<dependency>
@@ -25,7 +26,7 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
-			<version>1.5.9.RELEASE</version>
+			<version>2.3.7.RELEASE</version>
 			<scope>test</scope>
 		</dependency>
 
@@ -94,6 +95,11 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-amqp</artifactId>
 		</dependency>
+		<!-- 引入redis缓存 -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-redis</artifactId>
+		</dependency>
 		<!-- 添加日志 不需要添加依赖，以为spring-boot-starter-web已经包含 -->
 		<!-- <dependency> <groupId>org.springframework.boot</groupId> <artifactId>spring-boot-starter-logging</artifactId> 
 			</dependency> -->
@@ -138,12 +144,39 @@
 			<artifactId>hanlp-solr-plugin</artifactId>
 			<version>1.1.2</version>
 		</dependency>
-		<dependency>
-			<groupId>com.hankcs.nlp</groupId>
-			<artifactId>hanlp-solr-plugin</artifactId>
-			<version>1.1.2</version>
-		</dependency>
 		<!-- 汉语分词器 -->
+		<dependency>
+			<groupId>com.alibaba</groupId>
+			<artifactId>fastjson</artifactId>
+			<version>1.2.71</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/commons-codec/commons-codec -->
+		<dependency>
+			<groupId>commons-codec</groupId>
+			<artifactId>commons-codec</artifactId>
+			<version>1.15</version>
+		</dependency>
+
+		<!--引入kafak和spring整合的jar-->
+		<dependency>
+			<groupId>org.springframework.kafka</groupId>
+			<artifactId>spring-kafka</artifactId>
+			<version>2.2.8.RELEASE</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.apache.kafka/kafka-clients -->
+		<dependency>
+			<groupId>org.apache.kafka</groupId>
+			<artifactId>kafka-clients</artifactId>
+			<version>2.2.2</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<version>1.18.12</version>
+			<scope>provided</scope>
+		</dependency>
 	</dependencies>
 
 
@@ -152,10 +185,11 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
-				<version>1.5.4.RELEASE</version>
+				<version>2.3.6.RELEASE</version>
 				<configuration>
 					<mainClass>com.lhs.www.Start</mainClass>
-					<layout>WAR</layout>
+					<layout>JAR</layout>
+					<skip>true</skip>
 					<encoding>UTF-8</encoding>
 					<!-- 过滤后缀为pem、pfx的证书文件 -->
 					<nonFilteredFileExtensions>
