@@ -1,0 +1,9 @@
+/target/
+/logs
+# Eclipse
+.classpath
+.project
+.externalToolBuilders/
+.metadata
+.settings
+/bin

@@ -1,0 +1,110 @@
+<!-- 1根节点configuration，包含下面三个属性： scan: 当此属性设置为true时，配置文件如果发生改变，将会被重新加载，默认值为true。 
+	scanPeriod: 设置监测配置文件是否有修改的时间间隔，如果没有给出时间单位，默认单位是毫秒。当scan为true时，此属性生效。默认的时间间隔为1分钟。 
+	debug: 当此属性设置为true时，将打印出logback内部日志信息，实时查看logback运行状态。默认值为false。 -->
+<configuration debug="false">
+	<!-- 定义变量 -->
+	<property name="logback.appname" value="springBoot" />
+	<property name="logback.logdir" value="."/>
+
+	<!--输出到控制台 ConsoleAppender -->
+	<appender name="devAppender" class="ch.qos.logback.core.ConsoleAppender">
+		<!--展示格式 layout -->
+		<layout class="ch.qos.logback.classic.PatternLayout">
+			<pattern>%d [%.30t] %c %p %m%n</pattern>
+		</layout>
+		<encoder>
+			<charset>UTF-8</charset>
+			<pattern>%d [%thread] %-5level %logger{36} %line - %msg%n</pattern>
+		</encoder>
+	</appender>
+
+
+	<appender name="fileAppender"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		
+		<!--日志名称，如果没有File 属性，那么只会使用FileNamePattern的文件路径规则 如果同时有<File>和<FileNamePattern>，那么当天日志是<File>，明天会自动把今天 
+			的日志改名为今天的日期。即，<File> 的日志都是当天的。 -->
+		<File>${logback.logdir}/info.${logback.appname}.log</File>
+		<!--滚动策略，按照时间滚动 TimeBasedRollingPolicy -->
+		<rollingPolicy
+			class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<!--文件路径,定义了日志的切分方式——把每一天的日志归档到一个文件中,以防止日志填满整个磁盘空间 -->
+			<FileNamePattern>${logback.logdir}/info.${logback.appname}.%d{yyyy-MM-dd}.log
+			</FileNamePattern>
+			<!--只保留最近90天的日志 -->
+			<maxHistory>90</maxHistory>
+			<!--用来指定日志文件的上限大小，那么到了这个值，就会删除旧的日志 -->
+			<!--<totalSizeCap>1GB</totalSizeCap> -->
+		</rollingPolicy>
+		<!--日志输出编码格式化 -->
+		<encoder>
+			<charset>UTF-8</charset>
+			<pattern>%d [%thread] %-5level %logger{36} %line - %msg%n</pattern>
+		</encoder>
+	</appender>
+	
+	
+
+	<appender name="errorAppender"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<File>${logback.logdir}/error.${logback.appname}.log</File>
+		<filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+			<!-- 过滤器，只记录ERROR级别的日志 -->
+
+			<level>ERROR</level>
+			<!--匹配到就记录 -->
+			<!-- <onMatch>ACCEPT</onMatch> 没有匹配到禁止 <onMismatch>DENY</onMismatch> -->
+		</filter>
+        <rollingPolicy
+			class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<!--文件路径,定义了日志的切分方式——把每一天的日志归档到一个文件中,以防止日志填满整个磁盘空间 -->
+			<FileNamePattern>${logback.logdir}/error.${logback.appname}.%d{yyyy-MM-dd}.log</FileNamePattern>
+			<!--只保留最近10天的日志 -->
+			<maxHistory>10</maxHistory>
+			<!--用来指定日志文件的上限大小，那么到了这个值，就会删除旧的日志 -->
+			<totalSizeCap>10MB</totalSizeCap>
+		</rollingPolicy>
+		<encoder>
+			<charset>UTF-8</charset>
+			<pattern>%d [%thread] %-5level %logger{36} %line - %msg%n</pattern>
+		</encoder>
+    </appender>
+    
+    <appender name="prodAppender" class="ch.qos.logback.classic.AsyncAppender">
+		<filter class="ch.qos.logback.classic.filter.LevelFilter">
+			<level>INFO</level>
+			<onMatch>ACCEPT</onMatch>
+			<onMismatch>DENY</onMismatch>
+			</filter>
+		<appender-ref ref="fileAppender" />
+	</appender>
+
+	<!-- 测试环境+开发环境. 多个使用逗号隔开. -->
+	<!-- <springProfile name="dev">
+		<logger name="com.lhs.www" level="DEBUG" additivity="false">
+			<appender-ref ref="devAppender" />
+		</logger> 
+	</springProfile>-->
+	
+	
+	<logger name="org.springframework" additivity="false">
+        <level value="INFO" />
+        <!-- <appender-ref ref="${application.environment}Appender"/> -->
+        <appender-ref ref="devAppender"/>
+    </logger>
+	
+	<root>
+        <level value="DEBUG"/>
+         <!-- <appender-ref ref="${application.environment}Appender"/> -->
+        <appender-ref ref="devAppender"/>
+        <appender-ref ref="errorAppender"/>
+    </root>
+	<!-- 生产环境. -->
+	<!-- <springProfile name="prod">
+		<logger name="com.example.demo.controller" level="INFO"
+			additivity="false">
+			<appender-ref ref="consoleLog" />
+		</logger>
+	</springProfile> -->
+
+</configuration>
