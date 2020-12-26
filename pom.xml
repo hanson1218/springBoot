@@ -70,6 +70,15 @@
 			<artifactId>httpclient</artifactId>
 			<version>4.5.2</version>
 		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-cache</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.github.ben-manes.caffeine</groupId>
+			<artifactId>caffeine</artifactId>
+			<version>2.6.0</version>
+		</dependency>
 		<!-- https://mvnrepository.com/artifact/commons-dbcp/commons-dbcp -->
 		<dependency>
 			<groupId>commons-dbcp</groupId>
@@ -89,10 +98,15 @@
 			<version>3.4.12</version>
 		</dependency>
 		<!-- RabbitMQ -->
-		<dependency>
+		<!--<dependency>
 			<groupId>com.rabbitmq</groupId>
 			<artifactId>amqp-client</artifactId>
 			<version>3.6.5</version>
+		</dependency>-->
+		<dependency>
+			<groupId>com.rabbitmq</groupId>
+			<artifactId>amqp-client</artifactId>
+			<version>5.8.0</version>
 		</dependency>
 
 		<!-- springBoot 封装rabbitmq -->

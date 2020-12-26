@@ -20,7 +20,7 @@ public class MyListener {
         System.out.println("value:"+record.value());
     }
 
-    @KafkaListener(id = "${kafka.producer.group-id}",topics = {"foo","bar"})
+    @KafkaListener(id = "${spring.kafka.consumer.group-id}",topics = {"foo","bar"})
     public void listen2(ConsumerRecord<?, ?> record){
         System.out.println("topic：" + record.topic());
         System.out.println("key:" + record.key());

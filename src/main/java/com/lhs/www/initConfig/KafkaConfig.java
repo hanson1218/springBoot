@@ -29,23 +29,23 @@ public class KafkaConfig {
     private int retries;
     @Value("${spring.kafka.producer.batch-size}")
     private int batchSize;
-    @Value("${kafka.producer.buffer-memory}")
+    @Value("${spring.kafka.producer.buffer-memory}")
     private int bufferMemory;
-    @Value("${kafka.producer.key-serializer}")
+    @Value("${spring.kafka.producer.key-serializer}")
     private String keySerializerPro;
-    @Value("${kafka.producer.value-serializer}")
+    @Value("${spring.kafka.producer.value-serializer}")
     private String valueSerializerPro;
-    @Value("${kafka.producer.acks}")
+    @Value("${spring.kafka.producer.acks}")
     private String acks;
     //消费者配置
-    @Value("${kafka.producer.group-id}")
+    @Value("${spring.kafka.consumer.group-id}")
     private String groupId;
-    @Value("${kafka.consumer.enable-auto-commit}")
-    private int enableAutoCommit;
-    @Value("${kafka.consumer.key-deserializer}")
-    private int keySerializerCon;
-    @Value("${kafka.consumer.value-serializer}")
-    private int valueSerializerCon;
+    @Value("${spring.kafka.consumer.enable-auto-commit}")
+    private String enableAutoCommit;
+    @Value("${spring.kafka.consumer.key-deserializer}")
+    private String keySerializerCon;
+    @Value("${spring.kafka.consumer.value-deserializer}")
+    private String valueSerializerCon;
 
 
 
